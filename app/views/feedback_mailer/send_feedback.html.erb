@@ -1,0 +1,9 @@
+<p>Hi <%= @feedback.blog_post.author_name %>,</p>
+
+<p>You received new feedback on your post "<%= @feedback.blog_post.title %>":</p>
+
+<p>
+  <strong>From:</strong> <%= @feedback.name %> (<%= @feedback.email %>)<br>
+  <strong>Message:</strong><br>
+  <%= simple_format(@feedback.message) %>
+</p>

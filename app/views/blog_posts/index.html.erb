@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Blog posts" %>
+
+<div class="d-flex justify-content-between align-items-center mb-4 container">
+  <h1 class="fw-bold">Blog Posts</h1>
+  <%= link_to "New Blog Post", new_blog_post_path, class: "btn btn-primary" %>
+</div>  
+
+<div id="blog_posts" class="container my-4">
+  <% @blog_posts.each do |blog_post| %>
+    <%= render blog_post %>
+  <% end %>
+</div>
+

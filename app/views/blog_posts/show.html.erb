@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, @blog_post.title %>
+
+<div class="d-flex justify-content-between align-items-center mb-4 container">
+  <h1 class="fw-bold">Showing Blog Posts</h1>
+  <%= link_to "Back to blog posts", blog_posts_path, class: "btn btn-primary" %>
+</div>  
+
+
+<%= render @blog_post %>
+

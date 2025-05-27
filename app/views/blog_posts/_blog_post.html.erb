@@ -1,0 +1,45 @@
+<div id="<%= dom_id blog_post %>" class="card mb-4">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="card-title"><%= blog_post.title %></h5>
+      <small class="text-muted">Posted on <%= blog_post.created_at.strftime("%B %d, %Y") %></small>
+    </div>
+    <div class="card-text"><%= blog_post.content %></div>
+    <div class="card-text"><small class="text-muted">Author: <%= blog_post.author_name %> (<%= blog_post.author_email %>)</small></div>
+    <div class="d-flex justify-content-start gap-2 mt-3">
+      <%= link_to "Edit", edit_blog_post_path(blog_post), class: "btn btn-outline-secondary" %>
+      <%= button_to "Delete", blog_post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+      <%# hide this button if showing the current blog post %>
+      <%if blog_post != @blog_post%>
+      <%= link_to "Show", blog_post, class: "btn btn-outline-info" %>
+      <% end %>
+    </div>  
+    <hr>
+    <button class="btn btn-outline-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#feedback-<%= dom_id blog_post %>" aria-expanded="false" aria-controls="feedback-<%= dom_id blog_post %>">
+      Leave Feedback
+    </button>
+
+    <div class="collapse mt-3" id="feedback-<%= dom_id blog_post %>">
+      <p class="fw-bold">Please provide your feedback below:</p>
+
+      <%= form_with(model: [blog_post, Feedback.new], local: true) do |form| %>
+        <div class="mb-3">
+          <%= form.label :name, class: "form-label" %>
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :email, class: "form-label" %>
+          <%= form.email_field :email, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :message, class: "form-label" %>
+          <%= form.text_area :message, class: "form-control" %>
+        </div>
+
+        <%= form.submit "Send Feedback", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
