@@ -28,26 +28,32 @@ A simple blog application built with **Ruby on Rails 8** and **ESBuild**. Users 
 
 ### 1. Clone the repository
 
-git clone https://github.com/your-username/blog_app.git
-cd blog_app
+git clone https://github.com/austriamarcelo/blog_posts.git
+```bash
+cd blog_post
+```
 
 ### 2. Install dependencies
+```bash
 bundle install
-
+```
 ### 3. Set up the database
+```bash
 rails db:create
 rails db:migrate
-
+```
 ### 4. Seed the database with sample data
+```bash
 rails db:seed
-
+```
 ### 5. Install JavaScript dependencies
+```bash
 yarn install
-
+```
 
 ## ✉️ Email Configuration (Development)
 To enable feedback emails, configure SMTP settings in config/environments/development.rb.
-
+```bash
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -58,13 +64,14 @@ To enable feedback emails, configure SMTP settings in config/environments/develo
     authentication:       "plain",
     enable_starttls_auto: true
   }
-
+```
 
 ## ✅ Running the App
-
+```bash
 bin/dev
-
+```
 ## 🧪 Running Tests
-
 Run all tests:
+```bash
 bundle exec rspec
+```
